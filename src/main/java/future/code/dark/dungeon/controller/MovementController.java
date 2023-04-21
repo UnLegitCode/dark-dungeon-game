@@ -1,6 +1,7 @@
 package future.code.dark.dungeon.controller;
 
 import future.code.dark.dungeon.domen.Player;
+import future.code.dark.dungeon.service.GameMaster;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,6 +21,8 @@ public class MovementController extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (GameMaster.getInstance().isWin()) return;
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W -> player.move(UP);
             case KeyEvent.VK_S -> player.move(DOWN);

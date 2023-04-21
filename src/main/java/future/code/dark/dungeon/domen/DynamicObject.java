@@ -13,7 +13,7 @@ public abstract class DynamicObject extends GameObject {
         UP, DOWN, LEFT, RIGHT
     }
 
-    protected void move(Direction direction, int distance) {
+    protected boolean move(Direction direction, int distance) {
         int tmpXPosition = getXPosition();
         int tmpYPosition = getYPosition();
 
@@ -27,11 +27,14 @@ public abstract class DynamicObject extends GameObject {
         if (isAllowedSurface(tmpXPosition, tmpYPosition)) {
             xPosition = tmpXPosition;
             yPosition = tmpYPosition;
+
+            return true;
         }
+
+        return false;
     }
 
-    private Boolean isAllowedSurface(int x, int y) {
-        return GameMaster.getInstance().getMap().getMap()[y][x] != Configuration.WALL_CHARACTER;
+    protected boolean isAllowedSurface(int x, int y) {
+        return (GameMaster.getInstance().getMap().getMap()[y][x] != Configuration.WALL_CHARACTER);
     }
-
 }

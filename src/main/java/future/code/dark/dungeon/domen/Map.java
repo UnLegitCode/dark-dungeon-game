@@ -1,5 +1,6 @@
 package future.code.dark.dungeon.domen;
 
+import future.code.dark.dungeon.config.Configuration;
 import future.code.dark.dungeon.util.FileUtils;
 
 import javax.swing.ImageIcon;
@@ -104,6 +105,8 @@ public class Map {
             for (int j = 0; j < map[i].length; j++) {
                 if (map[i][j] == WALL_CHARACTER) {
                     graphics.drawImage(wallImage, j * SPRITE_SIZE, i * SPRITE_SIZE, null);
+                } else if (map[i][j] == EXIT_CHARACTER) {
+                    graphics.drawImage(exitImage, j * SPRITE_SIZE, i * SPRITE_SIZE, null);
                 } else {
                     graphics.drawImage(landImage, j * SPRITE_SIZE, i * SPRITE_SIZE, null);
                 }
