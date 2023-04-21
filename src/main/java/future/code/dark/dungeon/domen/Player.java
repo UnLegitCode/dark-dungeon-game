@@ -26,6 +26,7 @@ public class Player extends DynamicObject {
                 case Configuration.COIN_CHARACTER -> {
                     coins++;
                     GameMaster.getInstance().removeEnemy(xPosition, yPosition);
+                    GameMaster.getInstance().getMap().getMap()[yPosition][xPosition] = Configuration.LAND_CHARACTER;
                 }
                 case Configuration.EXIT_CHARACTER -> GameMaster.getInstance().setWin(true);
             }
